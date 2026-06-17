@@ -1,27 +1,33 @@
 function openLetter() {
-    // Jalankan efek memudar pada amplop
+    // Jalankan animasi buka penutup dan kertas meluncur ke atas
     document.getElementById('envelope-container').classList.add('open');
 
-    // Putar lagu latar
+    // Mainkan musik
     const music = document.getElementById('bg-music');
     music.play().catch(error => {
-        console.log("Autoplay musik dimulai setelah interaksi user.", error);
+        console.log("Musik diputar setelah klik.", error);
     });
 
-    // Pindah ke Screen 2 (Main Content) setelah 0.5 detik (pas saat amplop memudar habis)
+    // Beri jeda 1.8 detik agar kertas kelihatan naik dulu, baru transisi halaman
     setTimeout(() => {
         const envelopeContainer = document.getElementById('envelope-container');
         const mainContent = document.getElementById('main-content');
 
-        envelopeContainer.classList.add('hidden');
-        mainContent.classList.remove('hidden');
-        
-        // Mulai memicu hujan love berjatuhan
-        setInterval(createHeart, 300);
-        
-        // Scroll otomatis ke posisi paling atas halaman utama
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 500); // Diubah menjadi 500 milidetik agar instan dan mulus
+        envelopeContainer.style.transition = 'opacity 0.5s ease';
+        envelopeContainer.style.opacity = '0';
+
+        setTimeout(() => {
+            envelopeContainer.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            
+            // Nyalakan kuis cairan cinta
+            initQuiz();
+            
+            // Hujan Love berjatuhan
+            setInterval(createHeart, 300);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 500);
+    }, 1800); 
 }
 
 // Logika Image Slider (Galeri Foto)
