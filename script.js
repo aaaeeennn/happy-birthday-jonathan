@@ -1,28 +1,27 @@
 function openLetter() {
-    // Tambahkan class 'open' ke envelope container agar memicu animasi CSS di atas
+    // Jalankan efek memudar pada amplop
     document.getElementById('envelope-container').classList.add('open');
 
-    // Putar Musik
+    // Putar lagu latar
     const music = document.getElementById('bg-music');
     music.play().catch(error => {
-        console.log("Autoplay dicegah browser, dijalankan via klik.", error);
+        console.log("Autoplay musik dimulai setelah interaksi user.", error);
     });
 
-    // Beri jeda sedikit agar pacarmu bisa melihat kertasnya naik ke atas, 
-    // baru setelah itu layar berganti ke ucapan utama (Screen 2)
+    // Pindah ke Screen 2 (Main Content) setelah 0.5 detik (pas saat amplop memudar habis)
     setTimeout(() => {
         const envelopeContainer = document.getElementById('envelope-container');
         const mainContent = document.getElementById('main-content');
 
-        envelopeContainer.style.transition = 'opacity 0.5s ease';
-        envelopeContainer.style.opacity = '0';
-
-        setTimeout(() => {
-            envelopeContainer.classList.add('hidden');
-            mainContent.classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 500);
-    }, 1800); // 1.8 detik adalah waktu tunggu kertas naik sebelum pindah halaman
+        envelopeContainer.classList.add('hidden');
+        mainContent.classList.remove('hidden');
+        
+        // Mulai memicu hujan love berjatuhan
+        setInterval(createHeart, 300);
+        
+        // Scroll otomatis ke posisi paling atas halaman utama
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 500); // Diubah menjadi 500 milidetik agar instan dan mulus
 }
 
 // Logika Image Slider (Galeri Foto)
