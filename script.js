@@ -218,4 +218,45 @@ function checkAnswer(selectedIndex, clickedButton) {
     }, 1500);
 }
 
-// Fungsi Penggerak Ketinggian Cairan Gelombang Love
+// Fungsi Penggerak Ketinggian Cairan Gelombang Love Meter
+function updateLoveMeter(percent) {
+    const liquid = document.getElementById("love-liquid");
+    const percentText = document.getElementById("love-percent");
+    
+    percentText.innerText = percent + "%";
+    
+    // Rumus membalikkan koordinat 'top' CSS (100% artinya kosong di paling bawah, 0% artinya penuh di paling atas)
+    let topValue = 100 - percent;
+    
+    // Pengaman animasi agar gelombang lingkarannya tidak keluar bentuk hati saat penuh
+    if(topValue <= 0) {
+        topValue = -5; 
+    }
+    
+    liquid.style.top = topValue + "%";
+}
+
+// ========================================================
+// LOGIKA MAKE A WISH BOX & INTEGRASI WHATSAPP
+// ========================================================
+function sendWishToWhatsApp() {
+    const wishText = document.getElementById("wish-text").value;
+    
+    if (wishText.trim() === "") {
+        alert("Tulis wish kamu dulu ya, sayang... ❤️");
+        return;
+    }
+    
+    // Masukkan nomor WhatsApp kamu di sini (gunakan kode negara tanpa tanda +)
+    const myPhoneNumber = "628123456789"; 
+    
+    // Encode teks agar aman dibaca url browser
+    const formattedMessage = encodeURIComponent(`Hai sayang! Ini ucapan Make a Wish ulang tahunku melalui website yang kamu buat:\n\n"${wishText}"\n\nI love you so much! ❤️✨`);
+    
+    // Buka link WhatsApp API di tab baru
+    window.open(`https://api.whatsapp.com/send?phone=${myPhoneNumber}&text=${formattedMessage}`, '_blank');
+    
+    // Setelah dia mengirim ucapan, buka tombol rahasia menuju kotak hadiah!
+    document.getElementById("btn-go-to-gift").classList.remove("hidden");
+    document.getElementById("btn-go-to-gift").scrollIntoView({ behavior: 'smooth' });
+}
