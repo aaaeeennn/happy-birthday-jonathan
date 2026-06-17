@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday, Sayang! ❤️</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -14,13 +14,21 @@
     </audio>
 
     <div id="envelope-container">
-        <div class="envelope-wrapper" onclick="openLetter()">
-            <div class="envelope"></div>
-            <div class="flap"></div>
-            <div class="pocket"></div>
-            <div class="wax-seal">❤️</div>
-            <div class="letter"></div>
-            <div class="instruction">Buka amplopnya sayaaanggg... 💌</div>
+        <div class="cake-wrapper">
+            <h1 class="cake-instruction">Tiup semua lilinnya dulu sayaaanggg... 🎂✨</h1>
+            <p class="cake-sub-instruction">(Klik pada setiap api lilin untuk meniupnya ya! ❤️)</p>
+            
+            <div class="cake-container">
+                <div class="candle" id="candle-1" onclick="blowCandle(1)"><div class="flame"></div></div>
+                <div class="candle" id="candle-2" onclick="blowCandle(2)"><div class="flame"></div></div>
+                <div class="candle" id="candle-3" onclick="blowCandle(3)"><div class="flame"></div></div>
+                <div class="candle" id="candle-4" onclick="blowCandle(4)"><div class="flame"></div></div>
+                <div class="candle" id="candle-5" onclick="blowCandle(5)"><div class="flame"></div></div>
+
+                <div class="cake-top"></div>
+                <div class="cake-middle"></div>
+                <div class="cake-bottom"></div>
+            </div>
         </div>
     </div>
 
