@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     background-color: #c8e0f6;
     color: #4a4a4a;
     overflow-x: hidden;
@@ -111,7 +111,7 @@ body {
 
 /* SCREEN 2: Konten Utama */
 h1 {
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Quicksand', cursive;
     font-size: 2.5rem;
     color: #ff4d6d;
     margin-bottom: 10px;
