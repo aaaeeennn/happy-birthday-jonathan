@@ -7,13 +7,19 @@
 
 body {
     font-family: 'Quicksand', sans-serif;
-    background-color: #f0f7ff; 
     color: #333333;
     overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    
+    /* ── MENGGANTI BACKGROUND HALAMAN KEDUA ── */
+    background: url('bg-page2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Membuat background tetap diam saat halaman di-scroll (aesthetic) */
 }
 
 /* Screen Toggle Utilities */
