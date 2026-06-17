@@ -13,17 +13,16 @@
         <source src="Bruno Major - Nothing.mp3" type="audio/mpeg">
     </audio>
 
-<div id="envelope-container">
-    <div class="envelope-wrapper" onclick="openLetter()">
-        <div class="envelope"></div>
-        <div class="flap"></div>
-        <div class="pocket"></div>
-        <div class="wax-seal">❤️</div>
-        <div class="letter">
+    <div id="envelope-container">
+        <div class="envelope-wrapper" onclick="openLetter()">
+            <div class="envelope"></div>
+            <div class="flap"></div>
+            <div class="pocket"></div>
+            <div class="wax-seal">❤️</div>
+            <div class="letter"></div>
+            <div class="instruction">Klik amplopnya untuk membuka... 💌</div>
         </div>
-        <div class="instruction">Klik amplopnya untuk membuka... 💌</div>
     </div>
-</div>
 
     <div id="main-content" class="hidden">
         <header class="fade-in">
@@ -55,10 +54,7 @@
             </div>
         </section>
 
-        <footer class="fade-in">
-            <p>Made with ❤️ by Aen nya kak Jojo satu-satunya</p>
-
-<section class="quiz-section fade-in" id="quiz-area">
+        <section class="quiz-section fade-in" id="quiz-area">
             <h2 class="section-title">How Well Do You Know Us? 💖</h2>
             <p class="quiz-subtitle">Jawab kuis kecil ini ya! Setiap jawaban benar akan mengisi cairan cinta di bawah sampai penuh untuk membuka hadiahmu! ✨</p>
 
@@ -71,7 +67,6 @@
                             </clipPath>
                         </defs>
                     </svg>
-                    
                     <div class="heart-shape">
                         <div class="liquid-wave" id="love-liquid" style="top: 100%;"></div>
                     </div>
@@ -81,30 +76,22 @@
 
             <div class="quiz-box" id="quiz-box">
                 <h3 id="quiz-question">Loading Question...</h3>
-                <div class="quiz-options" id="quiz-options">
-                    </div>
+                <div class="quiz-options" id="quiz-options"></div>
             </div>
         </section>
 
         <section class="wish-section hidden" id="wish-area">
             <h2 class="section-title">Make a Birthday Wish 🎂✨</h2>
             <p class="wish-subtitle">Tulis harapan, doa, atau pesan spesialmu di bawah ini. Pesan ini akan terkirim langsung ke WhatsApp-ku! ❤️</p>
-            
             <div class="wish-box">
                 <textarea id="wish-text" placeholder="Tulis wish kamu di sini, sayang... 💕" rows="4"></textarea>
                 <button class="btn-premium" onclick="sendWishToWhatsApp()">Send Wish to My Heart ✉️</button>
             </div>
         </section>
 
-        <section class="fade-in text-center style-nav" style="margin-top: 30px;">
+        <section class="fade-in text-center" style="margin-top: 30px; min-height: 60px;">
             <button id="btn-go-to-gift" class="btn-premium hidden" onclick="showGiftPage()">
                 Open Your Birthday Treat! 🎁
-            </button>
-        </section>
-            
-        <section class="fade-in" style="margin-top: 40px;">
-            <button id="btn-go-to-gift" class="btn-premium" onclick="showGiftPage()">
-                Click for a Little Surprise... 🎁
             </button>
         </section>
 
@@ -136,7 +123,7 @@
                     </div>
                     <div class="gift-reward-card id-jakarta hidden">
                         <h3>🇮🇩 Jakarta Treat</h3>
-                        <p> Anything you've been craving in Jakarta! 🏙️❤️</p>
+                        <p>Anything you've been craving in Jakarta! 🏙️❤️</p>
                     </div>
                 </div>
 
@@ -153,10 +140,11 @@
                     </div>
                 </div>
             </div>
-            
             <p class="gift-note">*No matter which box you open, you deserve the happiest celebration!*</p>
         </div>
         
+        <footer class="fade-in">
+            <p>Made with ❤️ by Aen nya kak Jojo satu-satunya</p>
         </footer>
     </div>
 
