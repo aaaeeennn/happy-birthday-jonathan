@@ -1,31 +1,53 @@
 // ========================================================
-// LOGIKA BUKA SURAT & TRANSISI HALAMAN
+// LOGIKA TIUP LILIN KUE & TRANSISI HALAMAN
 // ========================================================
-function openLetter() {
-    document.getElementById('envelope-container').classList.add('open');
+let blownCandlesCount = 0;
+const totalCandles = 5;
 
-    const music = document.getElementById('bg-music');
-    music.play().catch(error => {
-        console.log("Musik diputar setelah klik interaksi user.", error);
-    });
+function blowCandle(candleId) {
+    const candle = document.getElementById(`candle-${candleId}`);
+    
+    // Cegah klik ganda pada lilin yang sudah padam
+    if (!candle.classList.contains('blown')) {
+        candle.classList.add('blown');
+        blownCandlesCount++;
+        
+        // Putar musik otomatis pada klik tiupan lilin pertama
+        if (blownCandlesCount === 1) {
+            const music = document.getElementById('bg-music');
+            music.play().catch(error => {
+                console.log("Musik diputar setelah interaksi user.", error);
+            });
+        }
+        
+        // Pindah halaman jika kelima lilin sudah sukses mati
+        if (blownCandlesCount === totalCandles) {
+            setTimeout(() => {
+                triggerPageTransition();
+            }, 800);
+        }
+    }
+}
+
+function triggerPageTransition() {
+    const envelopeContainer = document.getElementById('envelope-container');
+    const mainContent = document.getElementById('main-content');
+
+    envelopeContainer.style.transition = 'opacity 0.6s ease';
+    envelopeContainer.style.opacity = '0';
 
     setTimeout(() => {
-        const envelopeContainer = document.getElementById('envelope-container');
-        const mainContent = document.getElementById('main-content');
-
-        envelopeContainer.style.transition = 'opacity 0.5s ease';
-        envelopeContainer.style.opacity = '0';
-
-        setTimeout(() => {
-            envelopeContainer.classList.add('hidden');
-            mainContent.classList.remove('hidden');
-            
-            initQuiz();
-            setInterval(createHeart, 300);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 500);
-    }, 1800);
+        envelopeContainer.classList.add('hidden');
+        mainContent.classList.remove('hidden');
+        
+        initQuiz();
+        setInterval(createHeart, 300);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 600);
 }
+
+// Menjaga kecocokan deklarasi HTML klik agar tidak memicu error
+function openLetter() { return; }
 
 // ========================================================
 // EFEK ANIMASI HUJAN LOVE BERJATUHAN
@@ -152,6 +174,7 @@ function loadQuestion() {
     });
 }
 
+// Modifikasi persentase tangki proporsional mengikuti progres jawaban yang benar
 function checkAnswer(selectedIndex, clickedButton) {
     const currentQuiz = quizData[currentQuestionIndex];
     const allButtons = document.querySelectorAll(".option-btn");
@@ -166,7 +189,6 @@ function checkAnswer(selectedIndex, clickedButton) {
         allButtons[currentQuiz.correct].classList.add("correct");
     }
     
-    // Hitung progres tangki berdasarkan jawaban benar secara proporsional
     let currentLoveScore = Math.round((correctAnswersCount / quizData.length) * 100);
     updateLoveMeter(currentLoveScore);
 
@@ -175,7 +197,6 @@ function checkAnswer(selectedIndex, clickedButton) {
         if (currentQuestionIndex < quizData.length) {
             loadQuestion();
         } else {
-            // Sembunyikan area kuis, tampilkan bilah wish box
             document.getElementById("quiz-area").classList.add("hidden");
             document.getElementById("wish-area").classList.remove("hidden");
             document.getElementById("wish-area").scrollIntoView({ behavior: 'smooth' });
@@ -207,13 +228,15 @@ function sendWishToWhatsApp() {
         return;
     }
     
-    // Ganti dengan nomor WhatsApp kamu (Gunakan kode negara tanpa spasi/tanda +)
     const myPhoneNumber = "6281241101848"; 
-    
     const formattedMessage = encodeURIComponent(`Hai sayang! Ini ucapan Make a Wish ulang tahunku:\n\n"${wishText}"\n\nI love you so much! ❤️✨`);
     window.open(`https://api.whatsapp.com/send?phone=${myPhoneNumber}&text=${formattedMessage}`, '_blank');
     
-    // TOMBOL HADIAH ASLI BARU AKAN MUNCUL DI SINI SETELAH WHATSAPP TERBUKA
-    document.getElementById("btn-go-to-gift").classList.remove("hidden");
-    document.getElementById("btn-go-to-gift").scrollIntoView({ behavior: 'smooth' });
+    // Alur ringkas: otomatis buka modul pilihan kado sesaat setelah klik WA tanpa tombol penengah ganda
+    const giftSection = document.getElementById('gift-section');
+    giftSection.classList.remove('hidden');
+    
+    setTimeout(() => {
+        giftSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
 }
