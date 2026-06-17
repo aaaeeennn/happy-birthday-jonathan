@@ -1,23 +1,28 @@
-// Fungsi untuk memicu pembukaan surat dan memutar lagu
 function openLetter() {
-    // 1. Putar Musik
+    // Tambahkan class 'open' ke envelope container agar memicu animasi CSS di atas
+    document.getElementById('envelope-container').classList.add('open');
+
+    // Putar Musik
     const music = document.getElementById('bg-music');
     music.play().catch(error => {
-        console.log("Autoplay dicegah oleh browser, namun sudah dihandle via klik.", error);
+        console.log("Autoplay dicegah browser, dijalankan via klik.", error);
     });
 
-    // 2. Efek Transisi Amplop menghilang, Konten muncul
-    const envelopeContainer = document.getElementById('envelope-container');
-    const mainContent = document.getElementById('main-content');
-
-    envelopeContainer.style.transition = 'opacity 0.5s ease';
-    envelopeContainer.style.opacity = '0';
-
+    // Beri jeda sedikit agar pacarmu bisa melihat kertasnya naik ke atas, 
+    // baru setelah itu layar berganti ke ucapan utama (Screen 2)
     setTimeout(() => {
-        envelopeContainer.classList.add('hidden');
-        mainContent.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 500);
+        const envelopeContainer = document.getElementById('envelope-container');
+        const mainContent = document.getElementById('main-content');
+
+        envelopeContainer.style.transition = 'opacity 0.5s ease';
+        envelopeContainer.style.opacity = '0';
+
+        setTimeout(() => {
+            envelopeContainer.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 500);
+    }, 1800); // 1.8 detik adalah waktu tunggu kertas naik sebelum pindah halaman
 }
 
 // Logika Image Slider (Galeri Foto)
