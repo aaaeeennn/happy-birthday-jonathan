@@ -58,7 +58,51 @@
 
         <footer class="fade-in">
             <p>Made with ❤️ by Aen nya kak Jojo satu-satunya</p>
-       
+
+<section class="quiz-section fade-in" id="quiz-area">
+            <h2 class="section-title">How Well Do You Know Us? 💖</h2>
+            <p class="quiz-subtitle">Jawab kuis kecil ini ya! Setiap jawaban benar akan mengisi cairan cinta di bawah sampai penuh untuk membuka hadiahmu! ✨</p>
+
+            <div class="love-meter-container">
+                <div class="heart-liquid-wrapper">
+                    <svg class="heart-mask-svg" viewBox="0 0 32 29.6">
+                        <defs>
+                            <clipPath id="heart-clip">
+                                <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    
+                    <div class="heart-shape">
+                        <div class="liquid-wave" id="love-liquid" style="top: 100%;"></div>
+                    </div>
+                </div>
+                <div class="percentage-text" id="love-percent">0%</div>
+            </div>
+
+            <div class="quiz-box" id="quiz-box">
+                <h3 id="quiz-question">Loading Question...</h3>
+                <div class="quiz-options" id="quiz-options">
+                    </div>
+            </div>
+        </section>
+
+        <section class="wish-section hidden" id="wish-area">
+            <h2 class="section-title">Make a Birthday Wish 🎂✨</h2>
+            <p class="wish-subtitle">Tulis harapan, doa, atau pesan spesialmu di bawah ini. Pesan ini akan terkirim langsung ke WhatsApp-ku! ❤️</p>
+            
+            <div class="wish-box">
+                <textarea id="wish-text" placeholder="Tulis wish kamu di sini, sayang... 💕" rows="4"></textarea>
+                <button class="btn-premium" onclick="sendWishToWhatsApp()">Send Wish to My Heart ✉️</button>
+            </div>
+        </section>
+
+        <section class="fade-in text-center style-nav" style="margin-top: 30px;">
+            <button id="btn-go-to-gift" class="btn-premium hidden" onclick="showGiftPage()">
+                Open Your Birthday Treat! 🎁
+            </button>
+        </section>
+            
         <section class="fade-in" style="margin-top: 40px;">
             <button id="btn-go-to-gift" class="btn-premium" onclick="showGiftPage()">
                 Click for a Little Surprise... 🎁
