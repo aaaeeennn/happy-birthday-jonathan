@@ -108,19 +108,19 @@ function openGift(city) {
 // ========================================================
 const quizData = [
     {
-        question: "Di kota manakah kita melakukan technical site visit ke Waterloo Station & Clapham Junction awal tahun ini? 🏛️",
-        options: ["Jakarta", "London", "Edinburgh", "Cambridge"],
+        question: "Dimana kita pertama kali first date?",
+        options: ["Ramen For The Soul", "Acta Brasserie", "BPK Blok M", "The Veranda Cafe"],
         correct: 1
     },
     {
-        question: "Kapan tanggal ulang tahun pacarmu yang paling ganteng/cantik ini? 🗓️❤️",
-        options: ["19 Juni 1995", "30 Maret 1998", "3 September 1963", "6 November 1971"],
-        correct: 0
+        question: "Tanggal berapa kita jadian?",
+        options: ["11 Juli 2024", "12 Juli 2024", "13 Juli 2024", "14 Juli 2024"],
+        correct: 3
     },
     {
-        question: "Apa topik riset disertasi seru yang sedang dikerjakan saat ini? 🎓✨",
-        options: ["Intelligent Transport Systems", "Macroscopic Traffic Variables", "Developing Short Term Traffic Flow Forecasting Model", "Civil Infrastructure Evaluation"],
-        correct: 2
+        question: "Makanan yang mau pengen banget aku makan hari ini?",
+        options: ["Steak", "Pasta", "Sushi", "Kamu"],
+        correct: 3
     }
 ];
 
