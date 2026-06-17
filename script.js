@@ -79,3 +79,39 @@ openLetter = function() {
     // Mulai hujan love: bikin love baru setiap 300 milidetik (0.3 detik)
     setInterval(createHeart, 600);
 };
+
+// Fungsi untuk memunculkan Halaman Hadiah (Screen 3)
+function showGiftPage() {
+    const giftSection = document.getElementById('gift-section');
+    const btnGoToGift = document.getElementById('btn-go-to-gift');
+    
+    // Tampilkan section hadiah
+    giftSection.classList.remove('hidden');
+    
+    // Sembunyikan tombol pembukanya agar rapi
+    btnGoToGift.style.display = 'none';
+    
+    // Otomatis scroll ke area hadiah dengan smooth
+    setTimeout(() => {
+        giftSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+}
+
+// Fungsi untuk membuka Kotak Surprise dengan Efek Transisi
+function openGift(city) {
+    // 1. Cari elemen kotak dan kartu reward yang diklik
+    const selectedBox = document.getElementById(`box-${city}`);
+    const selectedCard = document.querySelector(`.gift-reward-card.id-${city}`);
+    
+    // 2. Tambahkan class animasinya
+    selectedBox.classList.add('opened');
+    
+    // 3. Munculkan teks hadiah dengan delay kecil agar efek tutup kotak terbang kelihatan dulu
+    setTimeout(() => {
+        selectedCard.classList.remove('hidden');
+        // Trigger class reveal untuk animasi pop-up smooth
+        setTimeout(() => {
+            selectedCard.classList.add('reveal');
+        }, 50);
+    }, 400);
+}
