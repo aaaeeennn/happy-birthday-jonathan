@@ -286,3 +286,187 @@ footer {
         opacity: 0; /* Menghilang saat sampai bawah */
     }
 }
+
+/* =========================================
+   SCREEN 3: DESAIN KOTAK HADIAH INTERAKTIF
+   ========================================= */
+#gift-section {
+    margin-top: 50px;
+    padding: 30px 10px;
+    border-top: 2px dashed #3b75b3;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.gift-title {
+    font-size: 1.8rem;
+    color: #1e466f;
+    margin-bottom: 5px;
+}
+
+.gift-subtitle {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* Penataan Letak Kotak secara Vertikal / Stack yang Rapi di HP */
+.gifts-grid {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.gift-box-container {
+    margin-bottom: 50px;
+    position: relative;
+    text-align: center;
+}
+
+/* Elemen Utama Kotak Hadiah */
+.gift-box {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    cursor: pointer;
+    perspective: 600px;
+    transition: transform 0.3s ease;
+}
+
+.gift-box:hover {
+    transform: scale(1.05);
+}
+
+/* Tutup Kotak Hadiah */
+.gift-lid {
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 130px;
+    height: 25px;
+    background: #d4af37; /* Warna emas premium */
+    border-radius: 4px;
+    z-index: 10;
+    box-shadow: 0 4px 5px rgba(0,0,0,0.15);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: bottom left;
+}
+
+/* Pita Vertikal Tengah pada Tutup */
+.gift-lid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 55px;
+    width: 20px;
+    height: 100%;
+    background: #1e466f; /* Pita biru kontras */
+}
+
+/* Badan Kotak Hadiah */
+.gift-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 120px;
+    height: 100px;
+    background: #3b75b3; /* Badan kotak biru */
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Pita Vertikal Tengah pada Badan Kotak */
+.gift-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50px;
+    width: 20px;
+    height: 100%;
+    background: #1e466f;
+}
+
+.gift-label {
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+/* ── ANIMASI EFEK KOTAK DIBUKA (DIPICU OLEH JS) ── */
+.gift-box.opened .gift-lid {
+    /* Tutup kotak terlempar ke atas dan berputar miring */
+    transform: translateY(-50px) rotateZ(-35deg) rotateX(20deg);
+    opacity: 0.9;
+}
+
+.gift-box.opened {
+    transform: scale(0.95);
+    pointer-events: none; /* Mencegah klik berulang */
+}
+
+/* Kartu Hadiah / Reward yang Muncul dari Dalam Kotak */
+.gift-reward-card {
+    background: #ffffff;
+    border: 2px solid #d4af37;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 320px;
+    margin: 20px auto 0 auto;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+    transform: translateY(10px) scale(0.9);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gift-reward-card.reveal {
+    opacity: 1;
+    transform: translateY(0) scale(1); /* Efek pop-up membesar yang smooth */
+}
+
+.gift-reward-card h3 {
+    color: #1e466f;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.gift-reward-card p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+.gift-note {
+    margin-top: 30px;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #888;
+}
+
+/* Style Tombol Premium */
+.btn-premium {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #3b75b3 0%, #1e466f 100%);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(30, 70, 111, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-premium:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(30, 70, 111, 0.4);
+}
