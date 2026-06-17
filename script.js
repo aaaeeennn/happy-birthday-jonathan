@@ -1,17 +1,14 @@
 // ========================================================
-// LOGIKA BUKA SURAT & TRANSISI HALAMAN (SUDAH DIGABUNG RAPI)
+// LOGIKA BUKA SURAT & TRANSISI HALAMAN
 // ========================================================
 function openLetter() {
-    // Jalankan animasi buka penutup dan kertas meluncur ke atas (CSS Class)
     document.getElementById('envelope-container').classList.add('open');
 
-    // Mainkan musik latar
     const music = document.getElementById('bg-music');
     music.play().catch(error => {
         console.log("Musik diputar setelah klik interaksi user.", error);
     });
 
-    // Beri jeda 1.8 detik agar kertas kelihatan meluncur naik dulu, baru transisi halaman memudar
     setTimeout(() => {
         const envelopeContainer = document.getElementById('envelope-container');
         const mainContent = document.getElementById('main-content');
@@ -23,16 +20,11 @@ function openLetter() {
             envelopeContainer.classList.add('hidden');
             mainContent.classList.remove('hidden');
             
-            // PANGGIL KUIS DI SINI AGAR SIAP DIMAINKAN
             initQuiz();
-            
-            // Mulai memicu hujan love berjatuhan: bikin love baru setiap 300 milidetik (0.3 detik)
             setInterval(createHeart, 300);
-            
-            // Scroll otomatis ke posisi paling atas halaman utama
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 500);
-    }, 1800); // Waktu tunggu kertas naik (1.8 detik) sebelum halaman berganti
+    }, 1800);
 }
 
 // ========================================================
@@ -41,28 +33,18 @@ function openLetter() {
 function createHeart() {
     const heart = document.createElement('div');
     heart.classList.add('heart-falling');
-    
-    // Karakter love menggunakan emoji
     heart.innerText = '❤️'; 
-    
-    // Mengatur posisi horizontal acak (dari kiri 0% sampai kanan 100% layar)
     heart.style.left = Math.random() * 100 + "vw";
     
-    // Mengatur ukuran love acak (antara 10px sampai 30px)
     const size = Math.random() * 20 + 10;
     heart.style.fontSize = size + "px";
     
-    // Mengatur kecepatan jatuh acak (antara 3 sampai 6 detik)
     const duration = Math.random() * 3 + 3;
     heart.style.animationDuration = duration + "s";
-    
-    // Mengatur tingkat transparansi acak
     heart.style.opacity = Math.random() * 0.5 + 0.5;
     
-    // Masukkan ke dalam HTML body
     document.body.appendChild(heart);
     
-    // Hapus elemen love dari memori setelah animasinya selesai (biar browser/HP gak lemot)
     setTimeout(() => {
         heart.remove();
     }, duration * 1000);
@@ -96,13 +78,9 @@ function showGiftPage() {
     const giftSection = document.getElementById('gift-section');
     const btnGoToGift = document.getElementById('btn-go-to-gift');
     
-    // Tampilkan section hadiah
     giftSection.classList.remove('hidden');
-    
-    // Sembunyikan tombol pembukanya agar rapi
     btnGoToGift.style.display = 'none';
     
-    // Otomatis scroll ke area hadiah dengan smooth
     setTimeout(() => {
         giftSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
@@ -112,17 +90,13 @@ function showGiftPage() {
 // LOGIKA MEMBUKA KOTAK SURPRISE HADIAH
 // ========================================================
 function openGift(city) {
-    // 1. Cari elemen kotak dan kartu reward yang diklik
     const selectedBox = document.getElementById(`box-${city}`);
     const selectedCard = document.querySelector(`.gift-reward-card.id-${city}`);
     
-    // 2. Tambahkan class animasinya
     selectedBox.classList.add('opened');
     
-    // 3. Munculkan teks hadiah dengan delay kecil agar efek tutup kotak terbang kelihatan dulu
     setTimeout(() => {
         selectedCard.classList.remove('hidden');
-        // Trigger class reveal untuk animasi pop-up smooth
         setTimeout(() => {
             selectedCard.classList.add('reveal');
         }, 50);
@@ -134,26 +108,25 @@ function openGift(city) {
 // ========================================================
 const quizData = [
     {
-        question: "Di kota manakah aku/kita melakukan technical site visit ke Waterloo Station & Clapham Junction awal tahun ini? 🏛️",
+        question: "Di kota manakah kita melakukan technical site visit ke Waterloo Station & Clapham Junction awal tahun ini? 🏛️",
         options: ["Jakarta", "London", "Edinburgh", "Cambridge"],
-        correct: 1 // Indeks ke-1 artinya "London"
+        correct: 1
     },
     {
         question: "Kapan tanggal ulang tahun pacarmu yang paling ganteng/cantik ini? 🗓️❤️",
         options: ["19 Juni 1995", "30 Maret 1998", "3 September 1963", "6 November 1971"],
-        correct: 0 // Indeks ke-0 artinya "19 Juni 1995"
+        correct: 0
     },
     {
         question: "Apa topik riset disertasi seru yang sedang dikerjakan saat ini? 🎓✨",
         options: ["Intelligent Transport Systems", "Macroscopic Traffic Variables", "Developing Short Term Traffic Flow Forecasting Model", "Civil Infrastructure Evaluation"],
-        correct: 2 // Indeks ke-2 artinya "Developing Short Term Traffic Flow..."
+        correct: 2
     }
 ];
 
 let currentQuestionIndex = 0;
 let correctAnswersCount = 0;
 
-// Fungsi Utama untuk Me-load Kuis Pertama Kali
 function initQuiz() {
     currentQuestionIndex = 0;
     correctAnswersCount = 0;
@@ -161,18 +134,15 @@ function initQuiz() {
     loadQuestion();
 }
 
-// Membuka dan Menampilkan Soal Kuis
 function loadQuestion() {
     const questionElement = document.getElementById("quiz-question");
     const optionsContainer = document.getElementById("quiz-options");
     
-    // Reset container tombol pilihan
     optionsContainer.innerHTML = "";
     
     let currentQuiz = quizData[currentQuestionIndex];
     questionElement.innerHTML = `Question ${currentQuestionIndex + 1}/${quizData.length}: <br><b>${currentQuiz.question}</b>`;
     
-    // Generate tombol pilihan jawaban
     currentQuiz.options.forEach((option, index) => {
         const button = document.createElement("button");
         button.innerText = option;
@@ -182,12 +152,10 @@ function loadQuestion() {
     });
 }
 
-// Logika Pengecekan Jawaban Benar / Salah
 function checkAnswer(selectedIndex, clickedButton) {
     const currentQuiz = quizData[currentQuestionIndex];
     const allButtons = document.querySelectorAll(".option-btn");
     
-    // Kunci tombol agar tidak bisa klik dua kali
     allButtons.forEach(btn => btn.disabled = true);
     
     if (selectedIndex === currentQuiz.correct) {
@@ -195,44 +163,36 @@ function checkAnswer(selectedIndex, clickedButton) {
         correctAnswersCount++;
     } else {
         clickedButton.classList.add("wrong");
-        // Beri highlight warna hijau ke jawaban yang benar sebagai koreksi
         allButtons[currentQuiz.correct].classList.add("correct");
     }
     
-    // Update ketinggian air di Love Meter secara realtime berdasarkan jawaban benar
+    // Hitung progres tangki berdasarkan jawaban benar secara proporsional
     let currentLoveScore = Math.round((correctAnswersCount / quizData.length) * 100);
     updateLoveMeter(currentLoveScore);
 
-    // Delay 1.5 detik lalu lanjut ke pertanyaan berikutnya
     setTimeout(() => {
         currentQuestionIndex++;
         if (currentQuestionIndex < quizData.length) {
             loadQuestion();
         } else {
-            // Kuis Selesai! Sembunyikan Kuis dan Munculkan Wish Box
+            // Sembunyikan area kuis, tampilkan bilah wish box
             document.getElementById("quiz-area").classList.add("hidden");
             document.getElementById("wish-area").classList.remove("hidden");
-            // Otomatis scroll ke area wish box
             document.getElementById("wish-area").scrollIntoView({ behavior: 'smooth' });
         }
     }, 1500);
 }
 
-// Fungsi Penggerak Ketinggian Cairan Gelombang Love Meter
 function updateLoveMeter(percent) {
     const liquid = document.getElementById("love-liquid");
     const percentText = document.getElementById("love-percent");
     
     percentText.innerText = percent + "%";
-    
-    // Rumus membalikkan koordinat 'top' CSS (100% artinya kosong di paling bawah, 0% artinya penuh di paling atas)
     let topValue = 100 - percent;
     
-    // Pengaman animasi agar gelombang lingkarannya tidak keluar bentuk hati saat penuh
     if(topValue <= 0) {
         topValue = -5; 
     }
-    
     liquid.style.top = topValue + "%";
 }
 
@@ -247,16 +207,13 @@ function sendWishToWhatsApp() {
         return;
     }
     
-    // Masukkan nomor WhatsApp kamu di sini (gunakan kode negara tanpa tanda +)
-    const myPhoneNumber = "628123456789"; 
+    // Ganti dengan nomor WhatsApp kamu (Gunakan kode negara tanpa spasi/tanda +)
+    const myPhoneNumber = "6281241101848"; 
     
-    // Encode teks agar aman dibaca url browser
     const formattedMessage = encodeURIComponent(`Hai sayang! Ini ucapan Make a Wish ulang tahunku melalui website yang kamu buat:\n\n"${wishText}"\n\nI love you so much! ❤️✨`);
-    
-    // Buka link WhatsApp API di tab baru
     window.open(`https://api.whatsapp.com/send?phone=${myPhoneNumber}&text=${formattedMessage}`, '_blank');
     
-    // Setelah dia mengirim ucapan, buka tombol rahasia menuju kotak hadiah!
+    // TOMBOL HADIAH ASLI BARU AKAN MUNCUL DI SINI SETELAH WHATSAPP TERBUKA
     document.getElementById("btn-go-to-gift").classList.remove("hidden");
     document.getElementById("btn-go-to-gift").scrollIntoView({ behavior: 'smooth' });
 }
