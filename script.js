@@ -110,7 +110,7 @@ const quizData = [
     {
         question: "Dimana kita pertama kali first date?",
         options: ["Ramen For The Soul", "Acta Brasserie", "BPK Blok M", "The Veranda Cafe"],
-        correct: 1
+        correct: 0
     },
     {
         question: "Tanggal berapa kita jadian?",
