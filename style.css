@@ -26,7 +26,7 @@ body {
 }
 
 /* =========================================
-   SCREEN 1: DESAIN AMPLOP MODERN (FIXED)
+   SCREEN 1: DESAIN AMPLOP MODERN FLAT (ANTI-GAGAL)
    ========================================= */
 #envelope-container {
     display: flex;
@@ -39,128 +39,122 @@ body {
 
 .envelope-wrapper {
     position: relative;
-    perspective: 1000px;
     text-align: center;
+    padding: 20px;
 }
 
+/* Badan Utama Amplop (Kantong Premium) */
 .envelope {
     position: relative;
-    width: 320px;
-    height: 220px;
-    background-color: #2b5c8f; /* Biru dasar */
-    border-radius: 0 0 15px 15px;
-    box-shadow: 0 15px 40px rgba(43, 92, 143, 0.25);
+    width: 300px;
+    height: 200px;
+    background-color: #2b5c8f; /* Biru Dasar */
+    border: 3px solid #d4af37; /* Bingkai Emas Tipis yang Mewah */
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(30, 70, 111, 0.25);
     cursor: pointer;
-    transition: transform 0.4s ease;
-    overflow: visible; /* Biar penutup atas tidak terpotong */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden; /* Memastikan kertas benar-benar sembunyi di dalam sebelum dibuka */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Efek tekstur kertas halus */
     background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCA0IDQiPjxnIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGcgZmlsbD0iI2ZmZmZmZiIgZmlsbC1vcGFjaXR5PSIwLjA1Ij48cGF0aCBkPSJNMCAwaDF2MUgwVjB6TTEgMWgxdjFIMVYxeU0yIDJoMXYxSDJWMzpNMyAzaDF2MUgzVjN6TTIgMGgxdjFIMlYwek0zIDEgaDF2MUgzVjF6TTAgMmgxdjFIMFYyek0xIDNoMXYxSDFWM3oiLz48L2c+PC9nPjwvc3ZnPg==');
 }
 
 .envelope:hover {
-    transform: translateY(-10px) rotate(-1deg);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(30, 70, 111, 0.35);
 }
 
-/* FLAP AMPLOP (PENUTUP SEGITIGA ATAS) */
-.flap {
+/* Pita Vertikal di Tengah Amplop */
+.envelope::before {
+    content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
     height: 100%;
-    background-color: #1e466f; /* Biru tua */
-    border-radius: 15px 15px 0 0;
-    z-index: 3; /* Berada di depan kertas sebelum dibuka */
-    clip-path: polygon(0 0, 100% 0, 50% 55%);
-    transform-origin: top;
-    transition: transform 0.6s ease 0.3s, z-index 0.6s step-end 0.3s;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    background-color: #1e466f; /* Biru Tua */
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
 }
 
-/* SAKU AMPLOP (SEGITIGA BAWAH) */
-.pocket {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 4; /* Paling depan untuk membungkus semuanya */
-    background-color: #3b75b3; /* Biru terang */
-    border-radius: 0 0 15px 15px;
-    clip-path: polygon(0 45%, 50% 100%, 100% 45%, 100% 100%, 0% 100%);
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);
-}
-
-/* WAX SEAL (SEGEL EMAS) */
+/* Segel Wax Seal Emas (Tombol Tengah) */
 .envelope::after {
     content: '❤️';
     position: absolute;
-    top: 55%; /* Disesuaikan agar pas di ujung segitiga penutup */
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 52px;
-    height: 52px;
-    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
-    color: #1e466f;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%); /* Metalik Emas */
+    border: 2px solid #d4af37;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
-    z-index: 5; /* Harus selalu paling depan sebelum dibuka */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 1px 3px rgba(255,255,255,0.5);
-    border: 2px solid #d4af37;
-    transition: opacity 0.3s ease, transform 0.6s ease 0.3s;
+    font-size: 22px;
+    z-index: 3;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3), inset 0 1px 3px rgba(255,255,255,0.4);
+    transition: all 0.4s ease;
 }
 
-/* KERTAS SURAT (LETTER) - SEMBUNYI DI DALAM */
+/* KERTAS SURAT DI DALAM AMPLOP */
 .letter {
     position: absolute;
-    bottom: 5px;
-    left: 20px;
-    width: 280px;
-    height: 160px;
+    width: 85%;
+    height: 80%;
     background-color: #ffffff;
     border-radius: 8px;
-    z-index: 2; /* Berada di dalam saku dan di belakang penutup */
+    z-index: 1; /* Di belakang pita dan segel sebelum dibuka */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCA0IDQiPjxnIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGcgZmlsbD0iIzAwMDAwMCIgZmlsbC1vcGFjaXR5PSIwLjA1Ij48cGF0aCBkPSJNMCAwaDF2MUgwVjB6TTEgMWgxdjFIMVYxeU0yIDJoMXYxSDJWMzpNMyAzaDF2MUgzVjN6TTIgMGgxdjFIMlYwek0zIDEgaDF2MUgzVjF6TTAgMmgxdjFIMFYyek0xIDNoMXYxSDFWM3oiLz48L2c+PC9nPjwvc3ZnPg==');
+    padding: 15px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+    transform: translateY(0); /* Diam di tempat dulu */
     transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .letter p {
     font-size: 15px;
     font-weight: 600;
-    color: #2b5c8f;
+    color: #1e466f;
     text-align: center;
     line-height: 1.4;
+    margin: 0;
 }
 
-/* ── ANIMASI BUKA SURAT YANG DI-TRIGGER JAVASCRIPT ── */
-#envelope-container.open .flap {
-    transform: rotateX(180deg);
-    z-index: 1; /* Pindah ke paling belakang setelah terbuka */
-}
-
-#envelope-container.open .letter {
-    transform: translateY(-110px); /* Kertas keluar ke atas dengan mulus */
-    z-index: 3; /* Maju ke depan saku agar teks tidak terhalang */
-}
-
-#envelope-container.open .envelope::after {
+/* ── LOGIKA KETIKA AMPLOP DI-KLIK OPEN (DIPICU JS) ── */
+/* Amplop meluncur turun dan menghilang dengan elegan */
+#envelope-container.open .envelope {
+    transform: translateY(40px) scale(0.9);
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.5s ease;
 }
 
+#envelope-container.open .instruction {
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/* Teks Instruksi di Bawah Amplop */
 .instruction {
-    margin-top: 30px;
+    margin-top: 25px;
     font-weight: 600;
     color: #2b5c8f;
     font-size: 0.95rem;
     animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-8px); }
+    60% { transform: translateY(-4px); }
 }
 
 /* SCREEN 2: Konten Utama */
