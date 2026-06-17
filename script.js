@@ -55,15 +55,19 @@ function openLetter() { return; }
 function createHeart() {
     const heart = document.createElement('div');
     heart.classList.add('heart-falling');
-    heart.innerText = '❤️'; 
+    
+    // UBAH DI SINI: Ganti dari hati merah menjadi hati biru
+    heart.innerText = '💙'; 
+    
     heart.style.left = Math.random() * 100 + "vw";
     
-    const size = Math.random() * 20 + 10;
+    // Ukuran love besar yang kemarin kita sesuaikan (25px - 55px)
+    const size = Math.random() * 30 + 25;
     heart.style.fontSize = size + "px";
     
-    const duration = Math.random() * 3 + 3;
+    const duration = Math.random() * 3 + 4;
     heart.style.animationDuration = duration + "s";
-    heart.style.opacity = Math.random() * 0.5 + 0.5;
+    heart.style.opacity = Math.random() * 0.4 + 0.6;
     
     document.body.appendChild(heart);
     
