@@ -463,3 +463,178 @@ footer {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(30, 70, 111, 0.4);
 }
+
+/* =========================================
+   KUIS INTERAKTIF & LIQUID LOVE METER
+   ========================================= */
+.quiz-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(30, 70, 111, 0.05);
+    text-align: center;
+}
+
+.quiz-subtitle, .wish-subtitle {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+/* Penata Letak Indikator Hati */
+.love-meter-container {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 30px auto;
+}
+
+.heart-liquid-wrapper {
+    width: 120px;
+    height: 110px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+
+/* Sembunyikan SVG template */
+.heart-mask-svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* Bentuk Hati Transparan sebagai Frame Atas */
+.heart-shape {
+    width: 100%;
+    height: 100%;
+    background-color: #e2e8f0; /* Warna abu-abu saat kosong */
+    clip-path: url(#heart-clip);
+    position: relative;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Efek Cairan & Gelombang Bergerak */
+.liquid-wave {
+    position: absolute;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, #3b75b3 0%, #60a5fa 100%); /* Cairan Biru Estetik */
+    border-radius: 40%; /* Membuat efek lengkungan gelombang */
+    transition: top 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: wave-rotate 4s linear infinite;
+    z-index: 1;
+}
+
+@keyframes wave-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Teks Persentase di Tengah Hati */
+.percentage-text {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e466f;
+    background: #ffffff;
+    padding: 2px 10px;
+    border-radius: 12px;
+    border: 1.5px solid #3b75b3;
+    z-index: 5;
+}
+
+/* Desain Kotak Pertanyaan Kuis */
+.quiz-box {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1.5px solid #dbeafe;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+#quiz-question {
+    font-size: 1.05rem;
+    color: #1e466f;
+    margin-bottom: 20px;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Tombol Pilihan Jawaban */
+.option-btn {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    background-color: #f8fafc;
+    color: #475569;
+    border: 1.5px solid #e2e8f0;
+    padding: 12px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: left;
+}
+
+.option-btn:hover {
+    background-color: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1e466f;
+}
+
+/* Efek Jawaban Salah / Benar saat Diklik */
+.option-btn.correct {
+    background-color: #dcfce7 !important;
+    border-color: #4ade80 !important;
+    color: #15803d !important;
+    font-weight: 600;
+}
+
+.option-btn.wrong {
+    background-color: #fee2e2 !important;
+    border-color: #f87171 !important;
+    color: #b91c1c !important;
+}
+
+/* =========================================
+   MAKE A WISH BOX STYLING
+   ========================================= */
+.wish-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: #ffffff;
+    border: 2px solid #3b75b3;
+    border-radius: 20px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.wish-box textarea {
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.9rem;
+    padding: 15px;
+    border: 1.5px solid #bfdbfe;
+    border-radius: 12px;
+    outline: none;
+    resize: none;
+    margin-bottom: 15px;
+    color: #333;
+    transition: border 0.3s ease;
+}
+
+.wish-box textarea:focus {
+    border-color: #1e466f;
+    box-shadow: 0 0 8px rgba(30, 70, 111, 0.15);
+}
+
