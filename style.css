@@ -124,6 +124,7 @@ body {
 }
 
 /* KERTAS SURAT (LETTER) - SEMBUNYI DI DALAM KANTONG */
+/* Pastikan konten di dalam kertas bersih total saat tertutup */
 .letter {
     position: absolute;
     top: 15px;
@@ -132,13 +133,18 @@ body {
     height: 190px;
     background-color: #ffffff;
     border-radius: 6px;
-    z-index: 2; /* Di dalam kantong, di belakang flap & pocket */
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+}
+
+/* Clear any text parameters */
+.letter::before, .letter::after {
+    content: none !important;
 }
 
 .letter p {
