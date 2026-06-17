@@ -182,7 +182,7 @@ body {
 h1 {
     font-family: 'Quicksand', cursive;
     font-size: 2.5rem;
-    color: #ff4d6d;
+    color: #1e466f; /* Diubah dari pink ke Navy Blue */
     margin-bottom: 10px;
 }
 
@@ -194,10 +194,14 @@ h1 {
 
 .card-message {
     background: #fff;
-    padding: 25px;
+    padding: 30px 25px;
     border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.1);
-    line-height: 1.6;
+    border: 2px solid #1e466f;
+    outline: 2px solid #d4af37;
+    outline-offset: -8px;
+    /* Diubah: Bayangan pink diganti menjadi biru navy transparan tipis */
+    box-shadow: 0 12px 30px rgba(30, 70, 111, 0.15); 
+    line-height: 1.8;
     margin-bottom: 40px;
     font-size: 0.95rem;
 }
@@ -205,7 +209,7 @@ h1 {
 /* Image Slider (Galeri Foto) */
 h2 {
     font-size: 1.3rem;
-    color: #ff4d6d;
+    color: #1e466f; /* Diubah dari pink ke Navy Blue */
     margin-bottom: 15px;
 }
 
@@ -240,14 +244,15 @@ button.prev, button.next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.75);
     border: none;
     padding: 10px 15px;
     cursor: pointer;
     font-size: 18px;
     border-radius: 50%;
-    color: #ff4d6d;
+    color: #1e466f; /* Diubah dari pink ke Navy Blue */
     z-index: 10;
+    transition: all 0.2s ease;
 }
 
 button.prev { left: 10px; }
@@ -403,17 +408,28 @@ footer {
 }
 
 .quiz-subtitle, .wish-subtitle { font-size: 0.85rem; color: #555; margin-bottom: 25px; line-height: 1.4; }
-.love-meter-container { position: relative; width: 140px; height: 140px; margin: 0 auto 30px auto; }
-.heart-liquid-wrapper { width: 120px; height: 110px; position: absolute; top: 0; left: 10px; }
+.love-meter-container {
+    position: relative;
+    width: 240px;  /* Diperbesar dari 140px */
+    height: 240px; /* Diperbesar dari 140px */
+    margin: 0 auto 35px auto;
+}
+.heart-liquid-wrapper {
+    width: 220px;  /* Diperbesar dari 120px agar bentuk hatinya gagah */
+    height: 200px; /* Diperbesar dari 110px */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
 .heart-mask-svg { position: absolute; width: 0; height: 0; }
 
 .heart-shape {
     width: 100%;
     height: 100%;
-    background-color: #e2e8f0;
+    background-color: #e2e8f0; /* Warna abu-abu saat kosong */
     clip-path: url(#heart-clip);
     position: relative;
-    box-shadow: inset 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: inset 0 4px 15px rgba(0,0,0,0.15);
 }
 
 .liquid-wave {
@@ -435,17 +451,18 @@ footer {
 
 .percentage-text {
     position: absolute;
-    bottom: -5px;
+    bottom: -15px; /* Disesuaikan agar duduk manis di bawah lancipan hati */
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1.1rem;
+    font-size: 1.3rem; /* Ukuran font diperbesar agar lebih jelas dibaca */
     font-weight: 700;
-    color: #1e466f;
+    color: #1e466f; /* Tetap Navy Blue sesuai tema barumu */
     background: #ffffff;
-    padding: 2px 10px;
-    border-radius: 12px;
-    border: 1.5px solid #3b75b3;
+    padding: 4px 14px;
+    border-radius: 14px;
+    border: 2px solid #3b75b3;
     z-index: 5;
+    box-shadow: 0 4px 10px rgba(30, 70, 111, 0.1);
 }
 
 .quiz-box { background: #ffffff; padding: 20px; border-radius: 15px; border: 1.5px solid #dbeafe; }
