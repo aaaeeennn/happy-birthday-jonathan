@@ -210,7 +210,7 @@ function sendWishToWhatsApp() {
     // Ganti dengan nomor WhatsApp kamu (Gunakan kode negara tanpa spasi/tanda +)
     const myPhoneNumber = "6281241101848"; 
     
-    const formattedMessage = encodeURIComponent(`Hai sayang! Ini ucapan Make a Wish ulang tahunku melalui website yang kamu buat:\n\n"${wishText}"\n\nI love you so much! ❤️✨`);
+    const formattedMessage = encodeURIComponent(`Hai sayang! Ini ucapan Make a Wish ulang tahunku:\n\n"${wishText}"\n\nI love you so much! ❤️✨`);
     window.open(`https://api.whatsapp.com/send?phone=${myPhoneNumber}&text=${formattedMessage}`, '_blank');
     
     // TOMBOL HADIAH ASLI BARU AKAN MUNCUL DI SINI SETELAH WHATSAPP TERBUKA
