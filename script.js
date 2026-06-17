@@ -77,5 +77,5 @@ openLetter = function() {
     originalOpenLetter(); // Menjalankan fungsi buka surat & musik yang lama
     
     // Mulai hujan love: bikin love baru setiap 300 milidetik (0.3 detik)
-    setInterval(createHeart, 300);
+    setInterval(createHeart, 600);
 };
