@@ -1,61 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Happy Birthday ❤️</title>
-
-    <style>
-        body{
-            text-align:center;
-            background:#FFF8DC;
-            font-family:Arial;
-            padding:50px;
-        }
-
-        h1{
-            color:#ff4081;
-            font-size:50px;
-        }
-
-        p{
-            font-size:22px;
-        }
-
-        img{
-            width:300px;
-            border-radius:20px;
-        }
-
-        .heart{
-            animation:pulse 1s infinite;
-            font-size:40px;
-        }
-
-        @keyframes pulse{
-            50%{
-                transform:scale(1.2);
-            }
-        }
-    </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Sayang! ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<h1>🎉 Happy Birthday Sayang 🎉</h1>
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
-<img src="cover.jpeg">
+    <div id="envelope-container" class="active">
+        <div class="envelope-wrapper">
+            <div class="envelope" onclick="openLetter()">
+                <div class="flap"></div>
+                <div class="pocket"></div>
+                <div class="letter">
+                    <p>Tap untuk Buka Surat ✨</p>
+                </div>
+            </div>
+            <p class="instruction">Ada surat buat kamu, silakan dibuka... ❤️</p>
+        </div>
+    </div>
 
-<p>
-Terima kasih sudah menjadi orang terbaik dalam hidupku ❤️
-</p>
+    <div id="main-content" class="hidden">
+        <header class="fade-in">
+            <h1>Selamat Ulang Tahun, Sayang! 🎂❤️</h1>
+            <p class="subtitle">Hari ini harinya kamu, dan aku bersyukur banget ada kamu di hidupku.</p>
+        </header>
 
-<p>
-Semoga tahun ini penuh kebahagiaan dan impian yang tercapai.
-</p>
+        <section class="message-section fade-in">
+            <div class="card-message">
+                <p>"Di hari yang spesial ini, aku cuma mau bilang terima kasih ya udah selalu jadi orang yang luar biasa. Semoga di usia yang baru ini, kamu selalu dikelilingi kebahagiaan, kesehatan, dan semua impianmu satu per satu terwujud. Aku akan selalu ada di sini buat dukung kamu. *Happy birthday, my love!*"</p>
+            </div>
+        </section>
 
-<div class="heart">
-💛💛💛
-</div>
+        <section class="gallery-section fade-in">
+            <h2>Our Precious Memories 📸</h2>
+            <div class="slider">
+                <div class="slides">
+                    <div class="slide"><img src="foto1.jpg" alt="Memori 1"></div>
+                    <div class="slide"><img src="foto2.jpg" alt="Memori 2"></div>
+                    <div class="slide"><img src="foto3.jpg" alt="Memori 3"></div>
+                </div>
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </section>
 
+        <footer class="fade-in">
+            <p>Made with ❤️ by Me</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
