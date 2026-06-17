@@ -59,6 +59,61 @@
 
         <footer class="fade-in">
             <p>Made with ❤️ by Aen nya kak Jojo satu-satunya</p>
+       
+        <section class="fade-in" style="margin-top: 40px;">
+            <button id="btn-go-to-gift" class="btn-premium" onclick="showGiftPage()">
+                Click for a Little Surprise... 🎁
+            </button>
+        </section>
+
+        <div id="gift-section" class="hidden">
+            <h2 class="gift-title">Choose Your Birthday Treat! 🎁</h2>
+            <p class="gift-subtitle">Aen punya 3 kotak hadih buat Kak Jojo Pilih salah satu kotak yang paling ingin sayangku buka ya! ❤️</p>
+            
+            <div class="gifts-grid">
+                <div class="gift-box-container">
+                    <div class="gift-box" id="box-london" onclick="openGift('london')">
+                        <div class="gift-lid"></div>
+                        <div class="gift-body">
+                            <span class="gift-label">Box 1</span>
+                        </div>
+                    </div>
+                    <div class="gift-reward-card id-london hidden">
+                        <h3>🇬🇧 London Treat</h3>
+                        <p>A beautiful dinner date, strolling around Hyde Park, or a special treat at your favorite spot in London! ☕️✨</p>
+                    </div>
+                </div>
+
+                <div class="gift-box-container">
+                    <div class="gift-box" id="box-jakarta" onclick="openGift('jakarta')">
+                        <div class="gift-lid"></div>
+                        <div class="gift-body">
+                            <span class="gift-label">Box 2</span>
+                        </div>
+                    </div>
+                    <div class="gift-reward-card id-jakarta hidden">
+                        <h3>🇮🇩 Jakarta Treat</h3>
+                        <p>A fancy dinner with a city lights view, café hopping, or anything you've been craving in Jakarta! 🏙️❤️</p>
+                    </div>
+                </div>
+
+                <div class="gift-box-container">
+                    <div class="gift-box" id="box-shanghai" onclick="openGift('shanghai')">
+                        <div class="gift-lid"></div>
+                        <div class="gift-body">
+                            <span class="gift-label">Box 3</span>
+                        </div>
+                    </div>
+                    <div class="gift-reward-card id-shanghai hidden">
+                        <h3>🇨🇳 Shanghai Treat</h3>
+                        <p>An exciting culinary adventure, exploring the beautiful Bund, or a magical getaway treat in Shanghai! ⛩️🥢</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="gift-note">*No matter which box you open, you deserve the happiest celebration!*</p>
+        </div>
+        
         </footer>
     </div>
 
