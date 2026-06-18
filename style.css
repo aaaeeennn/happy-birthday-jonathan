@@ -42,7 +42,7 @@ body {
     width: 100%;
     
     /* MEMANGGIL GAMBAR KOLASE BARU SEBAGAI BACKGROUND */
-    background: linear-gradient(rgba(240, 247, 255, 0.8), rgba(219, 234, 254, 0.8)), url('bg-kue.png');
+    background: linear-gradient(rgba(240, 247, 255, 0.8), rgba(219, 234, 254, 0.8)), url('bg-kue.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
